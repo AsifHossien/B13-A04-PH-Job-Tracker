@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://kit.fontawesome.com/88207c0f65.js" crossorigin="anonymous"></script>
+    <title>Job Tracker</title>
+    <style>
+        .jobs-container {
+            min-height: 600px;
+            position: relative;
+        }
+        .card {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            position: relative;
+            z-index: 1;
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            border-left: 4px solid transparent;
+        }
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.02);
+            z-index: 2;
+            border-left: 4px solid #3b82f6;
+        }
+        .tab-active {
+            background-color: #3b82f6 !important;
+            color: white !important;
+            box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.3);
+        }
+        .tab {
+            transition: all 0.2s ease;
+        }
+        .jobs-wrapper {
+            position: relative;
+            width: 100%;
+        }
+        .stat {
+            background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%);
+            border-bottom: 3px solid #3b82f6;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-slate-700 to-slate-900 min-h-screen p-6 font-sans">
+    <div class="max-w-3xl mx-auto">
+        <div class="flex items-center justify-between mb-6">
+            <h1 class="text-3xl font-bold text-white drop-shadow-lg">Job Application Tracker</h1>
+        </div>
+        <div class="grid grid-cols-3 gap-4 mb-8">
+            <div class="stat rounded-box shadow-xl p-6">
+                <div class="stat-title text-sm text-gray-600 font-medium">Total Jobs</div>
+                <div class="stat-value text-3xl text-gray-800 font-bold" id="totalStats">8</div>
+                <div class="stat-desc text-xs text-gray-500 mt-1">All applications</div>
+            </div>
+            <div class="stat rounded-box shadow-xl p-6">
+                <div class="stat-title text-sm text-gray-600 font-medium">Interview</div>
+                <div class="stat-value text-3xl text-gray-800 font-bold" id="interviewStats">0</div>
+                <div class="stat-desc text-xs text-gray-500 mt-1">Selected for interview</div>
+            </div>
+            <div class="stat rounded-box shadow-xl p-6">
+                <div class="stat-title text-sm text-gray-600 font-medium">Rejected</div>
+                <div class="stat-value text-3xl text-gray-800 font-bold" id="rejectedStats">0</div>
+                <div class="stat-desc text-xs text-gray-500 mt-1">Not selected</div>
+            </div>
+        </div>
+        <div class="mb-4">
+            <div class="flex items-center justify-between mb-4">
+                <h2 class="text-2xl font-semibold text-white drop-shadow">Available Jobs</h2>
+                <span class="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-white font-medium shadow-lg"
+                    id="availableJobsCount">8 out of 8 jobs</span>
+            </div>
+            <div class="flex gap-2 mb-6 bg-white/10 backdrop-blur-sm p-2 rounded-2xl">
+                <button
+                    class="tab px-6 py-2.5 rounded-full text-sm font-medium transition-all text-white/90 hover:bg-white/20 flex-1 sm:flex-none"
+                    id="tabAll">All Jobs</button>
+                <button
+                    class="tab px-6 py-2.5 rounded-full text-sm font-medium transition-all text-white/90 hover:bg-white/20 flex-1 sm:flex-none"
+                    id="tabInterview">Interview</button>
+                <button
+                    class="tab px-6 py-2.5 rounded-full text-sm font-medium transition-all text-white/90 hover:bg-white/20 flex-1 sm:flex-none"
+                    id="tabRejected">Rejected</button>
+            </div>
+            <div class="jobs-wrapper">
+                <div id="jobsContainer" class="jobs-container"></div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
