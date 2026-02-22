@@ -149,10 +149,8 @@ function updateActiveTab(tabId) {
     } else {
         tabRejected.className = 'tab px-6 py-2.5 rounded-full text-sm font-medium transition-all tab-active flex-1 sm:flex-none';
     }
-    
     updateStats();
 }
-
 function createJobCard(job) {
     const cardDiv = document.createElement('div');
     cardDiv.className = 'card bg-gradient-to-br from-white to-slate-50 shadow-xl rounded-box p-6 mb-4 relative group border border-slate-200';
@@ -190,10 +188,10 @@ function createJobCard(job) {
         
         <div class="flex flex-wrap gap-2 mb-3">
             <span class="px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-xs font-medium flex items-center gap-1">
-                <i class="fas fa-map-marker-alt text-blue-500 text-xs"></i> ${job.location}
+                <i class="fas fa-map-marker-alt text-blue-600 text-xs"></i> ${job.location}
             </span>
             <span class="px-3 py-1 bg-purple-50 text-purple-700 rounded-full text-xs font-medium flex items-center gap-1">
-                <i class="fas fa-clock text-purple-500 text-xs"></i> ${job.type}
+                <i class="fas fa-clock text-purple-600 text-xs"></i> ${job.type}
             </span>
             <span class="px-3 py-1 bg-emerald-50 text-emerald-700 rounded-full text-xs font-medium flex items-center gap-1">
                 <i class="fas fa-dollar-sign text-emerald-500 text-xs"></i> ${job.salary}
