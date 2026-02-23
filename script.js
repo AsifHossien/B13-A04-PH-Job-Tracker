@@ -126,11 +126,11 @@ function updateStats() {
     rejectedStats.textContent = rejectedCount;
     
     if (currentTab === 'all') {
-        availableJobsCount.textContent = totalCount;
+        availableJobsCount.textContent = totalCount + ' out of 8 jobs';
     } else if (currentTab === 'interview') {
-        availableJobsCount.textContent = interviewCount + ' out of ' + totalCount + ' jobs';
+        availableJobsCount.textContent = interviewCount + ' out of 8 jobs';
     } else if (currentTab === 'rejected') {
-        availableJobsCount.textContent = rejectedCount + ' out of ' + totalCount + ' jobs';
+        availableJobsCount.textContent = rejectedCount + ' out of 8 jobs';
     }
 }
 
@@ -150,6 +150,7 @@ function updateActiveTab(tabId) {
     }
     updateStats();
 }
+
 function createJobCard(job) {
     const cardDiv = document.createElement('div');
     cardDiv.className = 'card bg-gradient-to-br from-white to-slate-50 shadow-xl rounded-box p-6 mb-4 relative group border border-slate-200';
@@ -284,7 +285,7 @@ function filterAndDisplayJobs() {
             const emptyDiv = document.createElement('div');
             emptyDiv.className = 'text-center py-16 bg-white/90 backdrop-blur-sm rounded-box shadow-xl';
             emptyDiv.innerHTML = `
-                <i class="fas fa-briefcase text-6xl text-slate-300 mb-4"></i>
+                <i class="fas fa-briefcase text-6xl text-slate-700 mb-4"></i>
                 <h3 class="text-2xl font-semibold text-slate-700 mb-2">No jobs available</h3>
                 <p class="text-slate-500">Check back soon for new job opportunities</p>
             `;
@@ -391,9 +392,35 @@ function deleteJob(jobId) {
         card.style.transform = 'scale(0.95)';
         setTimeout(() => {
             card.remove();
-            if (currentTab !== 'all') {
-                filterAndDisplayJobs();
+            
+            let visibleJobs = [];
+            if (currentTab === 'all') {
+                visibleJobs = jobs;
+            } else if (currentTab === 'interview') {
+                for (let i = 0; i < jobs.length; i++) {
+                    if (jobs[i].status === 'interview') {
+                        visibleJobs.push(jobs[i]);
+                    }
+                }
+            } else {
+                for (let i = 0; i < jobs.length; i++) {
+                    if (jobs[i].status === 'rejected') {
+                        visibleJobs.push(jobs[i]);
+                    }
+                }
             }
+            
+            if (visibleJobs.length === 0) {
+                const emptyDiv = document.createElement('div');
+                emptyDiv.className = 'text-center py-16 bg-white/90 backdrop-blur-sm rounded-box shadow-xl';
+                emptyDiv.innerHTML = `
+                    <i class="fas fa-briefcase text-6xl text-slate-700 mb-4"></i>
+                    <h3 class="text-2xl font-semibold text-slate-700 mb-2">No jobs available</h3>
+                    <p class="text-slate-500">Check back soon for new job opportunities</p>
+                `;
+                jobsContainer.appendChild(emptyDiv);
+            }
+            
             updateStats();
         }, 200);
     } else {
