@@ -127,7 +127,7 @@ function updateStats() {
     rejectedStats.textContent = rejectedCount;
     
     if (currentTab === 'all') {
-        availableJobsCount.textContent = totalCount + ' out of ' + TOTAL_JOBS + ' jobs';
+        availableJobsCount.textContent = totalCount;
     } else if (currentTab === 'interview') {
         availableJobsCount.textContent = interviewCount + ' out of ' + TOTAL_JOBS + ' jobs';
     } else if (currentTab === 'rejected') {
