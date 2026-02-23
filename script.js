@@ -126,11 +126,11 @@ function updateStats() {
     rejectedStats.textContent = rejectedCount;
     
     if (currentTab === 'all') {
-        availableJobsCount.textContent = totalCount + ' out of 8 jobs';
+        availableJobsCount.textContent = totalCount + ' jobs';
     } else if (currentTab === 'interview') {
-        availableJobsCount.textContent = interviewCount + ' out of 8 jobs';
+        availableJobsCount.textContent = interviewCount + ' of ' + totalCount + ' jobs';
     } else if (currentTab === 'rejected') {
-        availableJobsCount.textContent = rejectedCount + ' out of 8 jobs';
+        availableJobsCount.textContent = rejectedCount + ' of ' + totalCount + ' jobs';
     }
 }
 
