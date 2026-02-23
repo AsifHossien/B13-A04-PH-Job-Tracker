@@ -95,7 +95,6 @@ for (let i = 0; i < jobData.length; i++) {
     });
 }
 
-const TOTAL_JOBS = 8;
 let currentTab = 'all';
 
 const jobsContainer = document.getElementById('jobsContainer');
@@ -129,9 +128,9 @@ function updateStats() {
     if (currentTab === 'all') {
         availableJobsCount.textContent = totalCount;
     } else if (currentTab === 'interview') {
-        availableJobsCount.textContent = interviewCount + ' out of ' + TOTAL_JOBS + ' jobs';
+        availableJobsCount.textContent = interviewCount + ' out of ' + totalCount + ' jobs';
     } else if (currentTab === 'rejected') {
-        availableJobsCount.textContent = rejectedCount + ' out of ' + TOTAL_JOBS + ' jobs';
+        availableJobsCount.textContent = rejectedCount + ' out of ' + totalCount + ' jobs';
     }
 }
 
