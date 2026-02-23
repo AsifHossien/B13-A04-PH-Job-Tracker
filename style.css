@@ -1,0 +1,39 @@
+.jobs-container {
+    min-height: 600px;
+    position: relative;
+}
+
+.card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    position: relative;
+    z-index: 1;
+    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+    border-left: 4px solid transparent;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.02);
+    z-index: 2;
+    border-left: 4px solid #3b82f6;
+}
+
+.tab-active {
+    background-color: #3b82f6 !important;
+    color: white !important;
+    box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.3);
+}
+
+.tab {
+    transition: all 0.3s ease;
+}
+
+.jobs-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.stat {
+    background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%);
+    border-bottom: 3px solid #3b82f6;
+}
